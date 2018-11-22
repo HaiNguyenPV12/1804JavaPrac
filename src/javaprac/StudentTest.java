@@ -84,6 +84,12 @@ public class StudentTest {
                     System.out.print("\"male\" or \"female\" only: ");
                     check = true;
                 }
+                if (sex.equals("male")) {
+                    sex = "Male";
+                }
+                if (sex.equals("female")) {
+                    sex = "Female";
+                }
             } catch (Exception e) {
                 System.out.println("ERROR! Must be \"male\" or \"female\".");
                 System.out.print("Sex: ");
@@ -104,11 +110,13 @@ public class StudentTest {
                 }
             } catch (Exception e) {
                 System.out.println("Error. Must be a number.");
+                System.out.print("Year: ");
             }
         } while (check == true);
 
         objStudent = new Student(id, yob, sex);
         Students[index++] = objStudent;
+        System.out.println("\nStudent added successfully.\n");
     }
 
     public void printMenu() {
@@ -132,9 +140,12 @@ public class StudentTest {
     }
 
     public void display() {
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < Students.length; i++) {
             if (index == 0) {
-                System.out.println("Array is empty");
+                System.out.println("\nArray is empty\n");
+                return;
+            }
+            if (i == index) { // since 'i < index' in for loop isn't working.
                 return;
             }
             System.out.println("\nID:            " + Students[i].id);
@@ -162,7 +173,7 @@ public class StudentTest {
                 System.exit(0);
                 break;
             default:
-                System.out.println("Please enter a valid option.");
+                System.out.println("Please enter a valid option. (1-3)");
                 break;
             }
         }
